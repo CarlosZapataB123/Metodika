@@ -1,0 +1,107 @@
+/* ============================================================
+   tokens.css — Sistema de diseño
+   Única fuente de verdad para color, tipografía y espaciado.
+   Estética: cuaderno de laboratorio / página de método de tesis.
+   ============================================================ */
+
+:root {
+  /* ---- Color ---------------------------------------------- */
+  --papel:        #F5F6F4;   /* fondo general, blanco frío     */
+  --superficie:   #FFFFFF;   /* tarjetas y panel documento     */
+  --tinta:        #1C2430;   /* texto principal                */
+  --tinta-suave:  #4C5663;   /* texto secundario               */
+  --tinta-tenue:  #8A93A0;   /* metadatos, etiquetas           */
+  --filete:       #DCE0DE;   /* líneas de 1px                  */
+  --filete-fuerte:#B9C0BD;
+
+  --prusia:       #1D4E6B;   /* acento único: azul prusia      */
+  --prusia-tinte: #EAF0F4;   /* fondo de selección             */
+  --prusia-borde: #9FB8C8;
+
+  --ambar:        #8A5A00;   /* advertencia metodológica       */
+  --ambar-tinte:  #FBF3E2;
+  --salvia:       #3E6B4F;   /* confirmación / decisión tomada */
+  --salvia-tinte: #ECF2EE;
+  --carmin:       #8C2F39;   /* error de validación            */
+
+  /* ---- Tipografía ------------------------------------------ */
+  --serif: "IBM Plex Serif", Georgia, serif;        /* documento */
+  --sans:  "IBM Plex Sans", system-ui, sans-serif;  /* interfaz  */
+  --mono:  "IBM Plex Mono", ui-monospace, monospace;/* salidas   */
+
+  --t-xs:   0.75rem;
+  --t-sm:   0.875rem;
+  --t-base: 1rem;
+  --t-md:   1.125rem;
+  --t-lg:   1.375rem;
+  --t-xl:   1.75rem;
+  --t-2xl:  2.25rem;
+
+  /* ---- Espaciado (escala de 4px) --------------------------- */
+  --e-1: 0.25rem;  --e-2: 0.5rem;  --e-3: 0.75rem; --e-4: 1rem;
+  --e-5: 1.5rem;   --e-6: 2rem;    --e-7: 3rem;    --e-8: 4rem;
+
+  /* ---- Misc ------------------------------------------------- */
+  --radio: 3px;                 /* deliberadamente discreto */
+  --sombra: 0 1px 2px rgba(28, 36, 48, 0.06);
+  --transicion: 180ms ease;
+  --ancho-max: 1320px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --transicion: 0ms; }
+}
+
+/* ============================================================
+   Tema oscuro — mismos tokens, valores nocturnos.
+   Se activa con [data-tema="oscuro"] (toggle manual) o, sin
+   preferencia guardada, siguiendo al sistema operativo.
+   ============================================================ */
+
+[data-tema="oscuro"] {
+  --papel:        #141920;
+  --superficie:   #1C2430;
+  --tinta:        #E8ECE9;
+  --tinta-suave:  #A8B1BC;
+  --tinta-tenue:  #6B7585;
+  --filete:       #2C3440;
+  --filete-fuerte:#3C4450;
+
+  --prusia:       #5B96BC;   /* prusia aclarado para contraste AA */
+  --prusia-tinte: #1A2E3A;
+  --prusia-borde: #35586F;
+
+  --ambar:        #D9A348;
+  --ambar-tinte:  #2A2316;
+  --salvia:       #7FAE8F;
+  --salvia-tinte: #18241C;
+  --carmin:       #D98591;
+
+  --consola-fondo: #0D1117;
+  --sombra: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+:root { --consola-fondo: #1C2430; }
+
+/* Sin preferencia manual, seguir al sistema */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --papel:        #141920;
+    --superficie:   #1C2430;
+    --tinta:        #E8ECE9;
+    --tinta-suave:  #A8B1BC;
+    --tinta-tenue:  #6B7585;
+    --filete:       #2C3440;
+    --filete-fuerte:#3C4450;
+    --prusia:       #5B96BC;
+    --prusia-tinte: #1A2E3A;
+    --prusia-borde: #35586F;
+    --ambar:        #D9A348;
+    --ambar-tinte:  #2A2316;
+    --salvia:       #7FAE8F;
+    --salvia-tinte: #18241C;
+    --carmin:       #D98591;
+    --consola-fondo: #0D1117;
+    --sombra: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+}

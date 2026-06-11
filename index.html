@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Métodika · Plataforma de diseño metodológico cuantitativo</title>
+  <meta
+    name="description"
+    content="Sistema experto educativo que guía a estudiantes e investigadores en la construcción rigurosa de diseños metodológicos cuantitativos."
+  />
+
+  <!-- Tipografía: familia IBM Plex (serif para documento, sans para interfaz, mono para salidas) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <a class="salto" href="#tutor">Saltar al contenido principal</a>
+  <header class="cabecera">
+    <div class="cabecera__interior">
+      <h1 class="marca">
+        Métodika
+        <span class="marca__sub">Laboratorio de diseño metodológico cuantitativo</span>
+      </h1>
+      <button id="boton-tema" class="boton-tema" type="button" aria-label="Cambiar tema"></button>
+    </div>
+  </header>
+
+  <main class="principal">
+    <!-- Columna izquierda: diálogo con el tutor metodológico -->
+    <div id="tutor" aria-live="polite"></div>
+
+    <!-- Columna derecha: matriz metodológica viva -->
+    <div id="matriz" class="columna-matriz"></div>
+  </main>
+
+  <footer class="pie">
+    Métodika · Herramienta educativa de apoyo metodológico. No sustituye la
+    asesoría de un director de investigación. Código abierto bajo licencia MIT.
+  </footer>
+
+  <!-- Gráficos: Chart.js + boxplot (MIT, CDN). La app degrada a salida
+       textual completa si estas dependencias no cargan. -->
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@sgratzl/chartjs-chart-boxplot@4.4.4/build/index.umd.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
