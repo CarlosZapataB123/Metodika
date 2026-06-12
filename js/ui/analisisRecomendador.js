@@ -23,6 +23,7 @@ import {
   histogramaConNormal, barrasContingencia, lineasPrePost,
 } from '../charts/graficos.js';
 import { botonCargarCSV } from './csv.js';
+import { parseSeries } from './series.js';
 
 export function renderRecomendadorAnalisis(nodo, estado) {
   const m = estado.analisis;
@@ -177,20 +178,6 @@ function laboratorio(rec, estado) {
   }
 }
 
-/* ---- Parsers --------------------------------------------------------- */
-
-function parseSeries(texto, minSeries, minN) {
-  const series = texto.trim().split(/\n+/).map((linea) => {
-    const [etiqueta, resto] = linea.includes(':') ? linea.split(/:(.+)/) : [null, linea];
-    const valores = (resto ?? linea).split(/[,;\s]+/).filter(Boolean)
-      .map((v) => parseFloat(v.replace(',', '.')));
-    if (valores.some(Number.isNaN)) throw new Error(`Hay valores no numéricos en la línea «${linea.slice(0, 40)}…».`);
-    return { etiqueta: etiqueta?.trim() ?? null, valores };
-  });
-  if (series.length < minSeries) throw new Error(`Se requieren al menos ${minSeries} series (líneas) de datos.`);
-  if (series.some((s) => s.valores.length < minN)) throw new Error(`Cada serie necesita al menos ${minN} valores.`);
-  return series;
-}
 
 const f = (x, d = 3) => Number(x).toFixed(d);
 const pTexto = (p) => (p < 0.001 ? 'p < .001' : `p = ${f(p).replace('0.', '.')}`);

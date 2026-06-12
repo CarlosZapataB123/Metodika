@@ -534,3 +534,98 @@ textarea.campo__control { resize: vertical; }
   .matriz__texto, .matriz__tabla td { color: #111; }
   body { background: #fff; }
 }
+
+
+/* ---- Observatorio 3D (Fase 7) ----------------------------------- */
+
+.observatorio {
+  background: #0A0F18;
+  border: 1px solid #232E40;
+  border-radius: var(--radio);
+  padding: var(--e-5);
+  color: #CFD8E3;
+  box-shadow: 0 0 0 1px rgba(79, 163, 209, 0.06), 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.observatorio__cabecera {
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  color: #5B7390;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid #1B2433;
+  padding-bottom: var(--e-3);
+  margin-bottom: var(--e-4);
+  display: flex;
+  justify-content: space-between;
+}
+
+.observatorio__titulo {
+  font-family: var(--serif);
+  font-size: var(--t-md);
+  color: #E8EEF5;
+  margin-bottom: var(--e-2);
+}
+
+.observatorio__intro {
+  font-size: var(--t-sm);
+  color: #8FA1B8;
+  margin-bottom: var(--e-4);
+}
+
+/* Controles del observatorio sobre fondo cósmico */
+.observatorio .campo__etiqueta { color: #8FA1B8; }
+.observatorio .campo__control {
+  background: #101725;
+  border-color: #2A3650;
+  color: #DCE5EF;
+}
+.observatorio .campo__control:focus { border-color: #4FA3D1; }
+.observatorio .campo__ayuda { color: #5B7390; }
+.observatorio .boton-primario {
+  background: #16466B;
+  border-color: #2C6E9E;
+  color: #E8F2FA;
+}
+.observatorio .boton-secundario {
+  border-color: #2A3650;
+  color: #8FA1B8;
+}
+.observatorio .boton-secundario:hover { border-color: #4FA3D1; color: #BFE0F2; }
+.observatorio .advertencia {
+  background: #1B1610;
+  border-left-color: #D9A348;
+  color: #C9BFAE;
+}
+.observatorio .advertencia strong { color: #D9A348; }
+.observatorio .error-validacion { color: #E8A2AC; }
+
+.observatorio__lienzo {
+  position: relative;
+  height: 400px;
+  margin-top: var(--e-4);
+  border: 1px solid #1B2433;
+  border-radius: var(--radio);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(29, 78, 107, 0.25), transparent 55%),
+    #050810;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.observatorio__lienzo canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.observatorio__vacio {
+  color: #44546B;
+  font-style: italic;
+  font-size: var(--t-sm);
+  text-align: center;
+  padding: var(--e-5);
+}
+
+@media print { .columna-observatorio { display: none !important; } }

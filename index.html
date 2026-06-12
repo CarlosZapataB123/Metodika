@@ -17,6 +17,11 @@
     rel="stylesheet"
   />
 
+  <!-- Motor 3D del Observatorio (MIT, CDN, carga perezosa) -->
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/layout.css" />
@@ -40,6 +45,9 @@
 
     <!-- Columna derecha: matriz metodológica viva -->
     <div id="matriz" class="columna-matriz"></div>
+
+    <!-- Columna independiente: observatorio de gráficos 3D -->
+    <div id="observatorio" class="columna-observatorio"></div>
   </main>
 
   <footer class="pie">

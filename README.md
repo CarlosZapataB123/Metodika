@@ -9,7 +9,7 @@ cuantitativos — y enseña metodología mientras lo hace.
 > decisión explica qué significa, por qué importa, qué implicaciones tiene,
 > qué alternativas existen y qué errores frecuentes deben evitarse.
 
-## Características (v1.0)
+## Características (v1.1)
 
 - **Flujo de decisión con revelación progresiva**: el tutor presenta solo la
   decisión pertinente según las respuestas previas (alcance → manipulación →
@@ -91,7 +91,18 @@ cuantitativos — y enseña metodología mientras lo hace.
   se imprime a **PDF** con una hoja de impresión dedicada (solo el
   documento, siempre en claro).
 - **Integración continua**: GitHub Actions ejecuta la suite completa
-  (93 aserciones) en cada push y pull request.
+  (116 aserciones) en cada push y pull request.
+- **Observatorio 3D** (columna independiente del flujo metodológico):
+  gráficos "tipo universo" sobre Three.js — campo de estrellas, materiales
+  emisivos, órbita por arrastre y zoom — con cinco tipos: columnas 3D
+  (series × categorías), torta 3D explotada con relieve proporcional,
+  boxplot 3D (Q1–Q3, mediana, bigotes de Tukey y atípicos luminosos),
+  dispersión 3D (X·Y·Z) y senderos 3D para trayectorias longitudinales.
+  Acepta datos pegados, CSV o **ejemplos autogenerados** por tipo. Carga
+  perezosa del motor (si el CDN falla, el resto de la app no se afecta) e
+  incluye la advertencia metodológica sobre la distorsión perceptual del
+  3D: exploración y divulgación sí; informe de tesis, con los 2D del
+  laboratorio.
 - Persistencia local del proyecto (con degradación elegante sin
   `localStorage`), accesible por teclado, responsive, sin backend ni
   dependencias de pago.
@@ -119,6 +130,8 @@ js/
     confiabilidad.js  # alfa de Cronbach + ítem-total corregida
   charts/
     graficos.js       # fábrica de gráficos académicos sobre Chart.js
+    universoDatos.js  # matemática pura del Observatorio (testeable)
+    universo.js       # motor 3D: escena cósmica, órbita, constructores
   knowledge/
     index.js        # ensamblaje de la base de conocimiento
     alcance.js      # nodo de alcance (pedagogía completa)
@@ -172,8 +185,9 @@ No hay paso de compilación: lo que está en el repositorio es lo que se sirve.
 
 ## Dependencias
 
-Únicamente dos, ambas MIT y por CDN, con degradación elegante si no cargan:
-**Chart.js 4.4** y **@sgratzl/chartjs-chart-boxplot 4.4**. Todo lo demás
+Tres, todas MIT y por CDN, con degradación elegante si no cargan:
+**Chart.js 4.4**, **@sgratzl/chartjs-chart-boxplot 4.4** y **Three.js 0.160**
+(esta última con carga perezosa: solo se descarga al usar el Observatorio). Todo lo demás
 —motor metodológico, estadística (incluidas las CDF de normal, t, F y χ²),
 CSV, exportación— es código propio sin dependencias.
 

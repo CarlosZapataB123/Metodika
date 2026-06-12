@@ -9,6 +9,7 @@ import { state } from './core/state.js';
 import { renderTutor } from './ui/tutor.js';
 import { renderBlueprint } from './ui/blueprint.js';
 import { iniciarTema } from './ui/tema.js';
+import { iniciarObservatorio } from './ui/observatorio.js';
 
 const contenedorTutor = document.getElementById('tutor');
 const contenedorMatriz = document.getElementById('matriz');
@@ -22,3 +23,4 @@ state.suscribir(render);
 render(state.get());
 
 iniciarTema(document.getElementById('boton-tema'));
+iniciarObservatorio(document.getElementById('observatorio'));
