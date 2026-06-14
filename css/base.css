@@ -1,0 +1,51 @@
+/* ============================================================
+   base.css — Reset mínimo, tipografía global, accesibilidad
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: var(--t-base);
+  line-height: 1.6;
+  color: var(--tinta);
+  background: var(--papel);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { margin: 0; font-weight: 600; line-height: 1.25; }
+p { margin: 0 0 var(--e-4); }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--prusia); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Foco visible por teclado, siempre */
+:focus-visible {
+  outline: 2px solid var(--prusia);
+  outline-offset: 2px;
+  border-radius: var(--radio);
+}
+
+/* Solo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+::selection { background: var(--prusia-tinte); }

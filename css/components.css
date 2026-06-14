@@ -1,0 +1,536 @@
+/* ============================================================
+   components.css — Componentes de interfaz
+   ============================================================ */
+
+/* ---- Espina de etapas (progreso) --------------------------- */
+.espina {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-2) var(--e-5);
+  margin-bottom: var(--e-6);
+  padding-bottom: var(--e-4);
+  border-bottom: 1px solid var(--filete);
+  list-style: none;
+  padding-left: 0;
+}
+
+.espina__etapa {
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--tinta-tenue);
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+}
+
+.espina__etapa::before {
+  content: "";
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid var(--filete-fuerte);
+  background: transparent;
+}
+
+.espina__etapa--activa { color: var(--prusia); font-weight: 600; }
+.espina__etapa--activa::before { border-color: var(--prusia); background: var(--prusia); }
+.espina__etapa--completa { color: var(--salvia); }
+.espina__etapa--completa::before { border-color: var(--salvia); background: var(--salvia); }
+
+/* ---- Tarjeta de decisión ----------------------------------- */
+.decision {
+  background: var(--superficie);
+  border: 1px solid var(--filete);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: var(--e-6);
+  margin-bottom: var(--e-6);
+  animation: aparecer 280ms ease both;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .decision { animation: none; }
+}
+
+.decision__etiqueta {
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--prusia);
+  margin-bottom: var(--e-2);
+}
+
+.decision__pregunta {
+  font-family: var(--serif);
+  font-size: var(--t-lg);
+  font-weight: 600;
+  margin-bottom: var(--e-3);
+}
+
+.decision__contexto {
+  color: var(--tinta-suave);
+  font-size: var(--t-sm);
+  max-width: 60ch;
+  margin-bottom: var(--e-5);
+}
+
+/* ---- Opciones ----------------------------------------------- */
+.opciones { display: grid; gap: var(--e-3); }
+
+.opcion {
+  text-align: left;
+  width: 100%;
+  border: 1px solid var(--filete);
+  border-radius: var(--radio);
+  padding: var(--e-4);
+  background: var(--superficie);
+  transition: border-color var(--transicion), background var(--transicion);
+}
+
+.opcion:hover { border-color: var(--prusia-borde); }
+
+.opcion[aria-pressed="true"] {
+  border-color: var(--prusia);
+  background: var(--prusia-tinte);
+}
+
+.opcion__titulo { font-weight: 600; display: block; }
+
+.opcion__detalle {
+  display: block;
+  font-size: var(--t-sm);
+  color: var(--tinta-suave);
+  margin-top: var(--e-1);
+}
+
+/* ---- Bloque pedagógico (¿por qué importa?) ------------------ */
+.pedagogia { margin-top: var(--e-5); }
+
+.pedagogia__resumen {
+  font-size: var(--t-sm);
+  color: var(--prusia);
+  cursor: pointer;
+  font-weight: 500;
+  list-style: none;
+}
+.pedagogia__resumen::-webkit-details-marker { display: none; }
+.pedagogia__resumen::before { content: "▸ "; }
+details[open] > .pedagogia__resumen::before { content: "▾ "; }
+
+.pedagogia__cuerpo {
+  margin-top: var(--e-3);
+  padding: var(--e-4);
+  border-left: 2px solid var(--prusia-borde);
+  background: var(--papel);
+  font-size: var(--t-sm);
+  color: var(--tinta-suave);
+}
+
+.pedagogia__cuerpo h4 {
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--tinta-tenue);
+  margin: var(--e-4) 0 var(--e-2);
+}
+.pedagogia__cuerpo h4:first-child { margin-top: 0; }
+
+.pedagogia__cuerpo ul { margin: 0; padding-left: 1.2em; }
+.pedagogia__cuerpo li { margin-bottom: var(--e-1); }
+
+.referencias { font-style: italic; color: var(--tinta-tenue); }
+
+/* ---- Advertencia metodológica ------------------------------- */
+.advertencia {
+  margin-top: var(--e-4);
+  padding: var(--e-3) var(--e-4);
+  background: var(--ambar-tinte);
+  border-left: 2px solid var(--ambar);
+  font-size: var(--t-sm);
+  color: var(--tinta);
+}
+.advertencia strong { color: var(--ambar); }
+
+/* ---- Veredicto del motor (recomendación derivada) ------------ */
+.veredicto {
+  border: 1px solid var(--prusia);
+  border-radius: var(--radio);
+  background: var(--superficie);
+  padding: var(--e-6);
+  margin-bottom: var(--e-6);
+}
+
+.veredicto__etiqueta {
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  color: var(--prusia);
+  letter-spacing: 0.08em;
+  margin-bottom: var(--e-3);
+}
+
+.veredicto__nombre {
+  font-family: var(--serif);
+  font-size: var(--t-xl);
+  font-weight: 600;
+  margin-bottom: var(--e-3);
+}
+
+.veredicto__razonamiento {
+  font-size: var(--t-sm);
+  color: var(--tinta-suave);
+}
+
+.veredicto__razonamiento .premisa {
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  display: block;
+  padding: var(--e-1) 0;
+  border-bottom: 1px dotted var(--filete);
+}
+
+/* ---- Matriz metodológica viva (panel documento) -------------- */
+.matriz {
+  background: var(--superficie);
+  border: 1px solid var(--filete);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: var(--e-6);
+  font-family: var(--serif);
+}
+
+.matriz__cabecera {
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  color: var(--tinta-tenue);
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--filete);
+  padding-bottom: var(--e-3);
+  margin-bottom: var(--e-4);
+  display: flex;
+  justify-content: space-between;
+}
+
+.matriz__titulo {
+  font-size: var(--t-md);
+  font-weight: 600;
+  margin-bottom: var(--e-4);
+}
+
+.matriz__vacia {
+  color: var(--tinta-tenue);
+  font-style: italic;
+  font-size: var(--t-sm);
+}
+
+.matriz__seccion { margin-bottom: var(--e-4); }
+
+.matriz__rotulo {
+  font-family: var(--sans);
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--tinta-tenue);
+  margin-bottom: var(--e-1);
+}
+
+.matriz__texto { font-size: var(--t-sm); line-height: 1.7; }
+
+.matriz__acciones {
+  margin-top: var(--e-5);
+  padding-top: var(--e-4);
+  border-top: 1px solid var(--filete);
+  display: flex;
+  gap: var(--e-3);
+  font-family: var(--sans);
+}
+
+.boton-secundario {
+  font-size: var(--t-sm);
+  padding: var(--e-2) var(--e-4);
+  border: 1px solid var(--filete-fuerte);
+  border-radius: var(--radio);
+  color: var(--tinta-suave);
+  transition: border-color var(--transicion), color var(--transicion);
+}
+.boton-secundario:hover { border-color: var(--prusia); color: var(--prusia); }
+
+/* ============================================================
+   Fase 2 — Formularios académicos, fichas de variables, hipótesis
+   ============================================================ */
+
+.formulario {
+  margin-top: var(--e-4);
+  padding: var(--e-4);
+  border: 1px solid var(--filete);
+  border-radius: var(--radio);
+  background: var(--papel);
+}
+
+.formulario__titulo {
+  font-size: var(--t-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--tinta-tenue);
+  margin-bottom: var(--e-4);
+}
+
+.formulario__fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--e-3);
+}
+
+@media (max-width: 560px) {
+  .formulario__fila { grid-template-columns: 1fr; }
+}
+
+.formulario__acciones { display: flex; gap: var(--e-3); flex-wrap: wrap; }
+
+.campo { margin-bottom: var(--e-4); }
+
+.campo__etiqueta {
+  display: block;
+  font-size: var(--t-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--tinta-suave);
+  margin-bottom: var(--e-1);
+}
+
+.campo__control {
+  width: 100%;
+  font: inherit;
+  font-size: var(--t-sm);
+  color: var(--tinta);
+  background: var(--superficie);
+  border: 1px solid var(--filete-fuerte);
+  border-radius: var(--radio);
+  padding: var(--e-2) var(--e-3);
+  transition: border-color var(--transicion);
+}
+
+.campo__control:focus {
+  outline: none;
+  border-color: var(--prusia);
+}
+
+textarea.campo__control { resize: vertical; }
+
+.boton-primario {
+  font-size: var(--t-sm);
+  font-weight: 600;
+  padding: var(--e-2) var(--e-5);
+  border-radius: var(--radio);
+  background: var(--prusia);
+  color: var(--papel);
+  border: 1px solid var(--prusia);
+  transition: opacity var(--transicion);
+}
+.boton-primario:hover { opacity: 0.92; }
+
+.error-validacion {
+  color: var(--carmin);
+  font-size: var(--t-sm);
+  margin: var(--e-2) 0;
+}
+
+.pendientes {
+  margin-top: var(--e-4);
+  font-size: var(--t-sm);
+  color: var(--tinta-suave);
+  font-style: italic;
+  border-top: 1px dotted var(--filete);
+  padding-top: var(--e-3);
+}
+
+/* ---- Fichas de variables definidas --------------------------- */
+
+.fichas { display: grid; gap: var(--e-3); margin-bottom: var(--e-4); }
+
+.ficha {
+  border: 1px solid var(--filete);
+  border-left: 2px solid var(--salvia);
+  border-radius: var(--radio);
+  background: var(--superficie);
+  padding: var(--e-3) var(--e-4);
+}
+
+.ficha__cabecera {
+  display: flex;
+  align-items: baseline;
+  gap: var(--e-3);
+  margin-bottom: var(--e-2);
+}
+
+.ficha__meta {
+  font-size: var(--t-xs);
+  color: var(--tinta-tenue);
+  font-family: var(--mono);
+}
+
+.ficha__eliminar {
+  margin-left: auto;
+  color: var(--tinta-tenue);
+  font-size: var(--t-md);
+  line-height: 1;
+  padding: 0 var(--e-1);
+}
+.ficha__eliminar:hover { color: var(--carmin); }
+
+.ficha__def {
+  font-size: var(--t-sm);
+  color: var(--tinta-suave);
+  margin-bottom: var(--e-1);
+}
+
+/* ---- Hipótesis ------------------------------------------------ */
+
+.hipotesis-tipo {
+  font-size: var(--t-sm);
+  color: var(--tinta-suave);
+  margin-bottom: var(--e-3);
+}
+
+.hipotesis-meta {
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  color: var(--tinta-tenue);
+  margin-bottom: var(--e-4);
+}
+
+.hipotesis-resumen {
+  margin-top: var(--e-4);
+  padding: var(--e-4);
+  border-left: 2px solid var(--salvia);
+  background: var(--salvia-tinte);
+}
+
+.hipotesis-linea { font-size: var(--t-sm); margin-bottom: var(--e-2); }
+
+.hipotesis-resumen .boton-secundario { margin-top: var(--e-2); }
+
+/* ---- Tabla de la matriz metodológica --------------------------- */
+
+.matriz__tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-xs);
+  font-family: var(--sans);
+}
+
+.matriz__tabla th {
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--tinta-tenue);
+  border-bottom: 1px solid var(--filete-fuerte);
+  padding: var(--e-1) var(--e-2) var(--e-1) 0;
+}
+
+.matriz__tabla td {
+  vertical-align: top;
+  border-bottom: 1px dotted var(--filete);
+  padding: var(--e-2) var(--e-2) var(--e-2) 0;
+  color: var(--tinta-suave);
+}
+
+.matriz__tabla td:first-child { color: var(--tinta); font-weight: 500; }
+
+
+/* ---- Salida de consola estadística (Fase 3) ------------------- */
+
+.consola {
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  line-height: 1.7;
+  background: var(--consola-fondo);
+  color: #E8ECE9;
+  border-radius: var(--radio);
+  padding: var(--e-4);
+  overflow-x: auto;
+  margin: var(--e-4) 0 0;
+  white-space: pre;
+}
+
+.campo__ayuda {
+  font-size: var(--t-xs);
+  color: var(--tinta-tenue);
+  margin-top: var(--e-1);
+}
+
+
+/* ---- Gráficos (Fase 5) ----------------------------------------- */
+
+.grafico {
+  margin-top: var(--e-4);
+  border: 1px solid var(--filete);
+  border-radius: var(--radio);
+  background: var(--superficie);
+  padding: var(--e-4);
+}
+
+.grafico__titulo {
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--tinta-tenue);
+  margin-bottom: var(--e-3);
+}
+
+.grafico__lienzo {
+  position: relative;
+  height: 280px;
+}
+
+.boton-archivo {
+  display: inline-block;
+  cursor: pointer;
+  font-size: var(--t-xs);
+}
+
+
+/* ---- Tema y accesibilidad (Fase 6) ----------------------------- */
+
+.boton-tema {
+  font-size: var(--t-md);
+  line-height: 1;
+  color: var(--tinta-suave);
+  border: 1px solid var(--filete);
+  border-radius: var(--radio);
+  padding: var(--e-1) var(--e-3);
+  transition: color var(--transicion), border-color var(--transicion);
+}
+.boton-tema:hover { color: var(--prusia); border-color: var(--prusia-borde); }
+
+.salto {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--prusia);
+  color: var(--papel);
+  padding: var(--e-2) var(--e-4);
+  z-index: 10;
+}
+.salto:focus { left: var(--e-4); }
+
+/* ---- Impresión: solo la matriz metodológica, en claro ----------- */
+
+@media print {
+  :root, [data-tema="oscuro"] {
+    --papel: #fff; --superficie: #fff; --tinta: #111;
+    --tinta-suave: #333; --tinta-tenue: #666;
+    --filete: #ccc; --filete-fuerte: #999;
+  }
+  .cabecera, .pie, .salto, #tutor, .matriz__acciones { display: none !important; }
+  .principal { display: block; padding: 0; max-width: none; }
+  .columna-matriz { position: static; }
+  .matriz { border: none; box-shadow: none; padding: 0; }
+  .matriz__texto, .matriz__tabla td { color: #111; }
+  body { background: #fff; }
+}
